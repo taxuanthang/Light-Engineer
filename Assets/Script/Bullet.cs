@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public Vector2 dir;
     public Quaternion rotate;
     public Color color;
+    public float offSet = 0.5f;
     Rigidbody2D rb;
     SpriteRenderer sr;
 
@@ -75,11 +76,28 @@ public class Bullet : MonoBehaviour
 
             }
         }
+        else if (collision.gameObject.CompareTag("Portal"))
+        {
+            // dịch chuyển đến portal liên kết
+            Portal portal = collision.gameObject.GetComponent<Portal>();
+            // thay đổi hướng bay theo góc normal của portal liên kết
+            float angleNormalDir = Vector2.SignedAngle(portal.transform.up, -dir);
+
+            Vector3 newDir = (Quaternion.Euler(0, 0, angleNormalDir) * portal.linkedPortal.transform.up).normalized;
+
+            transform.position = portal.linkedPortal.transform.position + newDir*offSet;
+            dir = newDir.normalized;
+
+            // tạo thêm lineRender mới
+            currentLight = Instantiate(lightPrefabs, transform.position, Quaternion.identity).GetComponent<LightManager>();
+            currentLight.SetColor(this.color);
+            lightsList.Add(currentLight);
+        }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }
-        else if(collision.gameObject.CompareTag("Goal"))
+        else if (collision.gameObject.CompareTag("Goal"))
         {
             Destroy(gameObject);
         }
