@@ -12,18 +12,27 @@ public class Goal : MonoBehaviour
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
-    public void CheckWin()
+    public virtual void CheckWin(Bullet bullet)
     {
         switch (isAllowed)
         {
             case true:
-                print("Thang");
                 break;
             case false:
-
-                break;
+                return;
         }
 
+        print("Thang");
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+         if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            CheckWin(bullet);
+        }
     }
 
     public void Update()
@@ -50,3 +59,4 @@ public class Goal : MonoBehaviour
         }
     }
 }
+

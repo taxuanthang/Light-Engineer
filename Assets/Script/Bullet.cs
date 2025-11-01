@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -10,6 +12,11 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
 
+    public GameObject lightPrefabs;
+    public LightManager currentLight;
+    public List<LightManager> lightsList;
+
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,6 +25,8 @@ public class Bullet : MonoBehaviour
         // SignedAngle thì trả về góc xịn coi góc form là gốc và lấy theo góc quay của hệ tọa độ
         // calculate góc theo giữa hướng bay của đạn và vector normal
 
+        currentLight = Instantiate(lightPrefabs, transform.position, Quaternion.identity).GetComponent<LightManager>();
+        lightsList.Add(currentLight);
 
     }
     public void Update()
@@ -29,6 +38,8 @@ public class Bullet : MonoBehaviour
         // Giữ tốc độ cố định theo dir (tránh dùng AddForce mỗi frame)
         if (rb != null)
             rb.linearVelocity = dir.normalized * speed;
+
+        currentLight.SetPosition(this.transform.position);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,6 +67,10 @@ public class Bullet : MonoBehaviour
                     transform.RotateAround(new Vector3(contact.point.x,contact.point.y,0),Vector3.forward, Vector2.SignedAngle(dir, -newDir));
                     dir = newDir.normalized;
 
+                    // tạo lineRender mới
+                    currentLight = Instantiate(lightPrefabs, transform.position, Quaternion.identity).GetComponent<LightManager>();
+                    currentLight.SetColor(this.color);
+                    lightsList.Add(currentLight);
                 }
 
             }
@@ -66,8 +81,6 @@ public class Bullet : MonoBehaviour
         }
         else if(collision.gameObject.CompareTag("Goal"))
         {
-            Goal goal = collision.gameObject.GetComponent<Goal>();
-            goal.CheckWin();
             Destroy(gameObject);
         }
     }

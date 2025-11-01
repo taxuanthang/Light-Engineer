@@ -204,32 +204,15 @@ GameObject:
   m_Component:
   - component: {fileID: 479980643}
   - component: {fileID: 479980642}
-  - component: {fileID: 479980641}
   - component: {fileID: 479980644}
+  - component: {fileID: 479980645}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Goal
   m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &479980641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479980640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb01dcd9f337bb4bbc3e54d198e8cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowedTime: 2
-  unallowedTime: 4
-  timer: 0
-  isAllowed: 0
-  spriteRenderer: {fileID: 479980642}
 --- !u!212 &479980642
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -346,6 +329,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &479980645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479980640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa0d08b35ac0bd42995335347a7be38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedTime: 2
+  unallowedTime: 3
+  timer: 0
+  isAllowed: 0
+  spriteRenderer: {fileID: 479980642}
+  matchColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &492917434
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +446,7 @@ GameObject:
   - component: {fileID: 515461583}
   - component: {fileID: 515461585}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,7 +734,7 @@ GameObject:
   - component: {fileID: 522537171}
   - component: {fileID: 522537170}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1519,9 +1520,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2724338510526555146}
   - component: {fileID: 5072407502454730528}
-  - component: {fileID: 4217384560710076932}
   - component: {fileID: 7834207053153359509}
   - component: {fileID: 8450349489727874067}
+  - component: {fileID: 8450349489727874068}
   m_Layer: 3
   m_Name: ColorMirror
   m_TagString: Mirror
@@ -1544,18 +1545,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -125.881}
---- !u!114 &4217384560710076932
-MonoBehaviour:
+--- !u!1001 &4312953803567367241
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255883124579244819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a41b38dd74938b4491ba6da00111fab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1124148374075332724, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_Name
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124148374075332724, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.0967388
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6330492
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.057735983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235719698902391077, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2616856b0aca19f42acfff11579f45f5, type: 3}
 --- !u!212 &5072407502454730528
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1672,6 +1722,19 @@ MonoBehaviour:
   orbitUI: {fileID: 261670065}
   GO: {fileID: 2255883124579244819}
   rotationSpeed: 100
+--- !u!114 &8450349489727874068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255883124579244819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40af65adba5016498d8792b87149cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1686,3 +1749,4 @@ SceneRoots:
   - {fileID: 1232435354}
   - {fileID: 515461584}
   - {fileID: 522537172}
+  - {fileID: 4312953803567367241}

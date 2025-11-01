@@ -53,6 +53,8 @@ public class Shooter : MonoBehaviour
 
         bullet.speed =  speed;
         bullet.dir = (handAim.transform.position -  body.transform.position).normalized;
+
+
     }
 
     void KeepAimInCircle()
