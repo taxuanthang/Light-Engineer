@@ -9,6 +9,7 @@ TagManager:
   - Goal
   - Obstacle
   - Portal
+  - Splitter
   layers:
   - Default
   - TransparentFX
