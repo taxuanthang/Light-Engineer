@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "Tools/Level Creator Data")]
-public class LevelCreatorData : ScriptableObject
+[CreateAssetMenu(fileName = "NewLevelData2D", menuName = "Tools/2D Level Data")]
+public class LevelData2D : ScriptableObject
 {
     public List<GameObject> prefabs = new List<GameObject>();
 }
